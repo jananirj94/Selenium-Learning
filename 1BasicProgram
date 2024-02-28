@@ -1,0 +1,34 @@
+package javaselenium1;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Inputfield {
+
+	public static void main(String[] args) {
+		
+		// TODO Auto-generated method stub
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();	
+		driver.get("https://letcode.in/signup");
+		
+		WebElement e=driver.findElement(By.xpath("/html/body/app-root/app-signup/div/div/div/div/form/div[1]/label"));
+		e.getText();
+		System.out.println(e);
+		
+		driver.findElement(By.id("name")).sendKeys("jkdhfs");
+		// //-->relative xpath
+		//adding text in txt box
+		driver.findElement(By.xpath("//*[@id=\'email\']")).sendKeys("jana@janai.com");
+		//removing  the txt  
+		String prin=driver.findElement(By.id("email")).getText();
+		System.out.println(prin);
+		WebElement email=driver.findElement(By.id("email"));
+		
+		
+	}
+
+}
