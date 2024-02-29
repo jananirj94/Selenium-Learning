@@ -1,0 +1,33 @@
+package javaselenium1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class checkbox {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\Downloads\\SeleniumDriver\\chromedriver-win64\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://letcode.in/radio");
+
+		WebElement checked=driver.findElement(By.xpath("/html/body/app-root/app-radio-check/section[1]/div/div/div[1]/div/div/div[6]/label[2]"));
+	//if(checked.isSelected()) {
+		checked.click();
+	//}
+		boolean checks=checked.isSelected();
+		System.out.println(checks);
+		
+		WebElement check=driver.findElement(By.xpath("/html/body/app-root/app-radio-check/section[1]/div/div/div[1]/div/div/div[7]/label[2]"));
+		check.click();
+		
+		driver.quit();
+		
+		
+
+	}
+
+}
