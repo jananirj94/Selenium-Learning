@@ -1,0 +1,33 @@
+package javaselenium1;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class selectable {
+
+	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://letcode.in/selectable");
+		
+		List<WebElement> select=driver.findElements(By.xpath("//*[@id=\'selectable\']"));
+		int size=select.size();
+		System.out.println(size);
+		Actions action=new Actions(driver);
+	//	action.keyDown(Keys.CONTROL).click(select.get(0)).click(select.get(1)).click(select.get(2)).click(select.get(3)).build().perform();
+		/*
+		 * action.clickAndHold(select.get(1)); action.clickAndHold(select.get(2));
+		 * action.clickAndHold(select.get(3)).build().perform();
+		 */
+		action.keyDown(Keys.CONTROL).click(select.get(0)).build().perform();
+	}
+
+}
