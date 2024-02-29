@@ -1,0 +1,98 @@
+package javaselenium1;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class DropDownBox {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriverManager.chromedriver().setup();
+
+			WebDriver driver=new ChromeDriver();
+		driver.get("https://vikaspedia.in/contributer");
+		Thread.sleep(2000);
+		
+		driver.manage().window().maximize();
+
+
+		driver.findElement(By.id("fullname")).sendKeys("Janani");
+		Thread.sleep(3000);
+
+		driver.findElement(By.id("username")).sendKeys("jaja@gmail.com");
+		Thread.sleep(3000);
+		
+		driver.findElement(By.id("password")).sendKeys("Jananirh94!");
+		Thread.sleep(3000);
+		driver.findElement(By.id("confirmpassword")).sendKeys("Jananirh94!");
+		Thread.sleep(3000);
+		driver.findElement(By.id("phone")).sendKeys("1234567890");
+		Thread.sleep(3000);
+
+
+
+
+		
+		//select by index method starts frm 0,1 and so
+		WebElement dropdown1=driver.findElement(By.id("age"));
+		Select select=new Select(dropdown1);
+		select.selectByIndex(2);
+		Thread.sleep(3000);
+		//user seeing text is called visible text---select by visible text
+		//select by index and value
+		
+		
+		WebElement dropdown2=driver.findElement(By.id("gender"));
+		Select select1=new Select(dropdown2);
+		select1.selectByValue("2");
+		Thread.sleep(3000);
+		//select ny selectByVisibleText
+		WebElement dropdown3=driver.findElement(By.id("qualification"));
+		Select select2=new Select(dropdown3);
+		select2.selectByVisibleText("Postgraduation");
+		Thread.sleep(3000);
+		
+		WebElement dropdown4=driver.findElement(By.id("state"));
+		Select select3=new Select(dropdown4);
+		select3.selectByVisibleText("Pondicherry");
+		Thread.sleep(3000);
+		
+		WebElement dropdown5=driver.findElement(By.id("district"));
+		Select select4=new Select(dropdown5);
+		select4.selectByValue("481");
+		Thread.sleep(3000);
+		
+		WebElement dropdown6=driver.findElement(By.id("category"));
+		Select select6=new Select(dropdown6);
+		select6.selectByValue("9");
+		Thread.sleep(3000);
+		//generics
+		//gett the no of elt in drop down options 
+		List<WebElement> listOfOption=select6.getOptions();
+		int size=listOfOption.size();
+		System.out.println("No of elt"+size);	
+		//send keys method----question wll asked in interview
+		
+		dropdown6.sendKeys("Student");
+		
+		//multiselect dropdown option in site.Iam using site doesnt contains multiselect option jst writing the code oly.
+		
+	/*	WebElement mulipleSelect=driver.findElement(By.xpath("category"));
+	 * Select multiSelectBox.selectByIndex(1);
+	 * Select multiSelectBox.selectByIndex(2);
+	 * Select multiSelectBox.selectByIndex(3);
+	 * 
+	 * */
+	 
+
+		}
+
+}
+
