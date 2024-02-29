@@ -1,0 +1,37 @@
+package javaselenium1;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Radio {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+				WebDriverManager.chromedriver().setup();
+				WebDriver driver=new ChromeDriver();
+				driver.get("https://letcode.in/radio");
+				
+				
+				//checking Find which one is selected
+
+				WebElement check=driver.findElement(By.id("foo"));
+				WebElement uncheck=driver.findElement(By.id("notfoo"));
+				boolean status1=check.isSelected();
+				boolean status2=uncheck.isSelected();	
+				
+				System.out.println(status1);
+				System.out.println(status2);
+				
+				WebElement nooo=driver.findElement(By.id("no"));
+				nooo.click();
+				
+			
+
+	}
+
+}
