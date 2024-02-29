@@ -1,0 +1,44 @@
+package javaselenium1;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class alertBox {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://letcode.in/alert");
+		
+		WebElement alertBox=driver.findElement(By.id("accept"));
+		alertBox.click();
+		//very important line in code
+		Alert alert=driver.switchTo().alert();
+		alert.accept();
+		
+		WebElement confirmAlert=driver.findElement(By.id("confirm"));
+		confirmAlert.click();
+		Alert calert=driver.switchTo().alert();
+		Thread.sleep(2000);
+		calert.dismiss();
+		
+		WebElement promptalert=driver.findElement(By.id("prompt"));
+		Thread.sleep(2000);
+		promptalert.click();
+		
+		Alert palert=driver.switchTo().alert();
+		palert.sendKeys("janani");
+		Thread.sleep(2000);
+		palert.accept();
+
+		
+
+	}
+
+}
