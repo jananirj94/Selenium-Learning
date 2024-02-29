@@ -1,0 +1,64 @@
+package javaselenium1;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class firstprogram {
+	/*Window Handling concept
+	close()
+	quit()
+	getTitle()
+	List
+	Set - LinkedHashSet
+	Iterator or loop*/
+
+	public static void main(String[] args) {
+		// TODO Auto-generate
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Sakthi\\Downloads\\chromedriver-win64(1)\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://letcode.in/windows");
+		
+		String oldwin=driver.getWindowHandle();
+		//getWindowHandle----->parentwindow
+		
+		WebElement hme=driver.findElement(By.id("home"));
+		hme.click();
+		//getWindowHandles--->it contains both parent and child windows
+		Set<String> handles =	driver.getWindowHandles();
+		
+		for (String newWindow : handles) {
+			
+			driver.switchTo().window(newWindow);
+			
+		}
+		
+		WebElement edit=driver.findElement(By.xpath("/html/body/app-root/app-test-site/section[2]/div/div/div/div[1]/app-menu/div/footer/a"));
+		edit.click();
+		
+		driver.close();
+		driver.switchTo().window(oldwin);
+		
+		WebElement multi=driver.findElement(By.id("multi"));
+		multi.click();
+		
+		int size=driver.getWindowHandles().size();
+		System.out.println(size);
+		
+		
+		Set<String> newHandle=driver.getWindowHandles();
+		
+		for (String newhandlewindow : newHandle) {
+			if(!newhandlewindow.equals(oldwin)) {
+			
+			driver.switchTo().window(newhandlewindow);
+			driver.close();
+		}
+		}
+
+	}
+
+}
